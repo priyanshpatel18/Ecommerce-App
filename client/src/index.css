@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* -----NAVBAR----- */
+nav {
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .logo {
+  width: 70px;
+}
+.searchBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 50px;
+  max-width: 650px;
+  outline: 3px solid transparent;
+  border-radius: 3px;
+}
+.searchBar:focus-within {
+  outline: 3px solid rgb(240, 165, 70);
+}
+.searchBar .productSearch {
+  width: 600px;
+  padding: 10px 20px;
+  height: 50px;
+  outline: 0;
+  border: 0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.searchBar .submitBtn {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255, 205, 110);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.searchBar .submitBtn:hover {
+  background: rgb(240, 165, 70);
+}
+.searchBar .searchIcon {
+  width: 50%;
+}
+.btnContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.loginBtn {
+  background: rgb(250, 200, 0);
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+}
+.loginBtn:hover {
+  background: rgb(210, 160, 0);
+}
+.shoppingCart {
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.shoppingCart div {
+  color: #fff;
+  top: -5px;
+  left: 53%;
+  transform: translateX(-50%);
+  position: absolute;
+  font-size: 18px;
+  font-weight: 700;
+}
+.shoppingCart img {
+  height: 40px;
+  width: 40px;
+}
