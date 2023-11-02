@@ -11,6 +11,12 @@
   width: 100%;
   min-height: 100vh;
   position: relative;
+  background: #e3e6e6;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }
 
 /* -----NAVBAR----- */
@@ -92,14 +98,68 @@ nav .logo {
 }
 .shoppingCart div {
   color: #fff;
-  top: -5px;
+  top: -3px;
   left: 53%;
   transform: translateX(-50%);
   position: absolute;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
 }
 .shoppingCart img {
   height: 40px;
   width: 40px;
+}
+/* -----CARD-LIST----- */
+.card-container {
+  margin: 80px 30px;
+  display: inline-flex;
+  gap: 30px;
+}
+
+/* -----CARDS----- */
+.wrapper {
+  padding: 15px;
+  background: #fff;
+  margin: 20px auto;
+}
+
+.wrapper h2 {
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.boxes {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 0fr);
+  gap: 5px;
+}
+
+.boxes a {
+  width: 150px;
+  height: 180px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  margin: auto;
+  font-size: 12px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.boxes a:hover div{
+  transform: scale(1.05);
+}
+
+.boxes a div {
+  align-self: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 130px;
+  width: 100px;
+  color: white;
+  padding: 15px;
 }
