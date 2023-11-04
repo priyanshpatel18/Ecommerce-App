@@ -3,19 +3,19 @@ const data = {
     heading: "Deals on smartphones that suit your budget",
     items: [
       {
-        url: "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-m135flbueub/gallery/uk-galaxy-m13-sm-m135-sm-m135flbueub-532902386?$650_519_PNG$",
+        url: require("../assets/Phone1.avif"),
         text: "Budget | Under ₹10,000",
       },
       {
-        url: "https://images.samsung.com/is/image/samsung/p6pim/levant/sm-m146bzbvmea/gallery/levant-galaxy-m14-sm-m146-sm-m146bzbvmea-535799227?$650_519_PNG$",
+        url: require("../assets/Phone2.avif"),
         text: "Mid-range | ₹10,000 - ₹25,000",
       },
       {
-        url: "https://www.viranitelecom.com/wp-content/uploads/2021/03/One-Plus.png",
+        url: require("../assets/Phone3.avif"),
         text: "Premium | ₹25,000 - ₹40,000",
       },
       {
-        url: "https://images.squarespace-cdn.com/content/v1/622f8163a9e7c72a027bb1cd/858bcc06-c919-4b6c-87c1-8861313a4ac7/landscape-front.png",
+        url: require("../assets/Phone4.avif"),
         text: "Ultra Premium | Above ₹40,000",
       },
     ],
@@ -24,20 +24,62 @@ const data = {
     heading: "Up to 80% off | Deals on mouse, keyboards & more",
     items: [
       {
-        url: "https://in.store.asus.com/media/catalog/product/b/p/bp1504-01.png?width=439&height=439&store=en_IN&image-type=image",
+        url: require("../assets/Laptop1.avif"),
         text: "Laptop Bags & Backpacks",
       },
       {
-        url: "https://resource.logitech.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/mice/m720/gallery/m720-gallery-1a.png?v=1",
+        url: require("../assets/Laptop2.avif"),
         text: "Keyboard & Mouse",
       },
       {
-        url: "https://redragon.in/cdn/shop/products/M693mouse.png?v=1673246935",
+        url: require("../assets/Laptop3.avif"),
         text: "Gaming Accessories",
       },
       {
-        url: "https://i0.wp.com/atharcomputer.com/wp-content/uploads/2023/05/PULSE-15-B13.png?fit=1024%2C819&ssl=1",
+        url: require("../assets/Laptop4.avif"),
         text: "Laptops",
+      },
+    ],
+  },
+  Shoes: {
+    heading: "Starting ₹999 | Shoes & Sneakers",
+    items: [
+      {
+        url: require("../assets/Shoes1.avif"),
+        text: "Sports Shoes",
+      },
+      {
+        url: require("../assets/Shoes2.avif"),
+        text: "Casuals",
+      },
+      {
+        url: require("../assets/Shoes3.avif"),
+        text: "Loafers",
+      },
+      {
+        url: require("../assets/Shoes4.avif"),
+        text: "Jordans",
+      },
+    ],
+  },
+  Clothes: {
+    heading: "50% - 80% off | Men's Clothing",
+    items: [
+      {
+        url: require("../assets/Clothes1.avif"),
+        text: "Shirts",
+      },
+      {
+        url: require("../assets/Clothes2.png"),
+        text: "T-Shirts",
+      },
+      {
+        url: require("../assets/Clothes3.avif"),
+        text: "Hoodies",
+      },
+      {
+        url: require("../assets/Clothes4.avif"),
+        text: "Jeans",
       },
     ],
   },

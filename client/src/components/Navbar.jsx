@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import searchIcon from "../assets/searchIcon.png";
 import shoppingCart from "../assets/shoppingCart.png";
@@ -21,7 +22,9 @@ export default function Navbar() {
           </button>
         </form>
         <div className="btnContainer">
-          <button className="loginBtn">LOGIN</button>
+          <Link className="loginBtn" to="/login">
+            LOGIN
+          </Link>
           <button className="shoppingCart">
             <img src={shoppingCart} alt="cart" />
             <div>10</div>

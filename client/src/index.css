@@ -11,6 +11,9 @@
   width: 100%;
   min-height: 100vh;
   position: relative;
+}
+
+body {
   background: #e3e6e6;
 }
 
@@ -21,6 +24,7 @@ a {
 
 /* -----NAVBAR----- */
 nav {
+  z-index: 99;
   background: #000;
   position: fixed;
   top: 0;
@@ -85,9 +89,10 @@ nav .logo {
   border-radius: 10px;
   font-size: 17px;
   cursor: pointer;
+  border: 0;
 }
 .loginBtn:hover {
-  background: rgb(210, 160, 0);
+  background: rgb(230, 180, 0);
 }
 .shoppingCart {
   position: relative;
@@ -109,33 +114,34 @@ nav .logo {
   height: 40px;
   width: 40px;
 }
+
+/* -----HOME-PAGE------ */
+
 /* -----CARD-LIST----- */
 .card-container {
   margin: 80px 30px;
-  display: inline-flex;
+  justify-content: center;
+  display: flex;
   gap: 30px;
+  flex-wrap: wrap;
 }
-
 /* -----CARDS----- */
 .wrapper {
   padding: 15px;
   background: #fff;
-  margin: 20px auto;
+  margin: 20px 0;
 }
-
 .wrapper h2 {
   width: 300px;
   height: 50px;
   font-size: 20px;
 }
-
 .boxes {
   margin-top: 10px;
   display: grid;
-  grid-template-columns: repeat(2, 0fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 5px;
 }
-
 .boxes a {
   width: 150px;
   height: 180px;
@@ -148,11 +154,9 @@ nav .logo {
   flex-direction: column;
   justify-content: flex-start;
 }
-
-.boxes a:hover div{
+.boxes a:hover div {
   transform: scale(1.05);
 }
-
 .boxes a div {
   align-self: center;
   background-size: cover;
@@ -162,4 +166,74 @@ nav .logo {
   width: 100px;
   color: white;
   padding: 15px;
+}
+
+/* -----LOGIN-PAGE----- */
+/* -----SIGN-UP----- */
+
+.login-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-container .logo {
+  width: 100px;
+}
+.login-container h2 {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+.login-form {
+  width: 40%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+.login-form label {
+  font-weight: 600;
+}
+.login-form input {
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 20px;
+}
+.login-form .loginBtn {
+  margin: 20px 0;
+}
+.signUpLink {
+  width: 40%;
+  margin: 30px 0;
+  position: relative;
+}
+.signUpLink p {
+  color: #929292;
+  margin: 0 5px;
+}
+.signUpLink .title {
+  display: flex;
+  align-items: center;
+}
+.line {
+  background: #929292;
+  height: 1px;
+  flex-grow: 1;
+}
+.signUpBtn {
+  margin: 20px 0;
+  background: rgb(225, 225, 225);
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  border: 0;
+  width: 100%;
+}
+.signUpBtn:hover {
+  background: rgb(220, 220, 220);
 }
