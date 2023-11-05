@@ -2,8 +2,51 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import searchIcon from "../assets/searchIcon.png";
 import shoppingCart from "../assets/shoppingCart.png";
+import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const [isLoggedIn, setIsLoggedin] = useState(false);
+  const [userName, setUserName] = useState("");
+
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleUserBtnClick = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleLogoutClick = () => {
+    handleLogOut();
+    setShowDropdown(false);
+  };
+
+  function handleLogOut() {
+    Cookies.remove("token");
+    setIsLoggedin(false);
+    setUserName("");
+  }
+
+  useEffect(() => {
+    const decodeToken = () => {
+      const accessToken = Cookies.get("token");
+
+      if (accessToken) {
+        const tokenParts = accessToken.split(".");
+
+        if (tokenParts.length === 3) {
+          const base64Payload = tokenParts[1];
+          const decodedPayload = atob(base64Payload);
+          const tokenData = JSON.parse(decodedPayload);
+          setIsLoggedin(true);
+          setUserName(tokenData.userName);
+        } else {
+          console.error("Invalid token format");
+        }
+      }
+    };
+    decodeToken();
+  }, []);
+
   return (
     <>
       <nav>
@@ -22,9 +65,21 @@ export default function Navbar() {
           </button>
         </form>
         <div className="btnContainer">
-          <Link className="loginBtn" to="/login">
-            LOGIN
-          </Link>
+          {isLoggedIn ? (
+            <div className="userBtn" onClick={handleUserBtnClick}>
+              {userName}
+              {showDropdown && (
+                <div className="dropdown">
+                  <button onClick={handleLogoutClick}>Logout</button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link className="loginBtn" to="/login">
+              LOGIN
+            </Link>
+          )}
+
           <button className="shoppingCart">
             <img src={shoppingCart} alt="cart" />
             <div>10</div>

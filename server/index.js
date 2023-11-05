@@ -3,17 +3,24 @@ import mongoose from "mongoose";
 const app = express();
 import { DB_URL, PORT } from "./config.js";
 import productRouter from "./routes/productRouter.js";
-import userRouter from "./routes/customerRouter.js";
+import customerRouter from "./routes/customerRouter.js";
 import vendorRouter from "./routes/vendorRouter.js";
+import cors from "cors";
+// import { isLoggedIn } from "./middlewares/auth.js";
+
+// Authentication
+import cookieParser from "cookie-parser";
 
 // MiddleWares
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(cors());
+app.use(cookieParser());
 
 // Routes
 app.use("/products", productRouter);
-app.use("/users", userRouter);
-app.use("/vendors", vendorRouter);
+app.use("/customer", customerRouter);
+app.use("/vendor", vendorRouter);
 
 // Connection
 mongoose

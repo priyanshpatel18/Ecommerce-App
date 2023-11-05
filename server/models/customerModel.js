@@ -4,7 +4,6 @@ const customerSchema = new Schema({
   customerName: {
     type: String,
     required: true,
-    unique: true,
   },
   email: {
     type: String,

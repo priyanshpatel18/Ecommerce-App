@@ -90,6 +90,7 @@ nav .logo {
   font-size: 17px;
   cursor: pointer;
   border: 0;
+  text-transform: uppercase;
 }
 .loginBtn:hover {
   background: rgb(230, 180, 0);
@@ -114,7 +115,42 @@ nav .logo {
   height: 40px;
   width: 40px;
 }
-
+.userBtn {
+  background: rgb(250, 200, 0);
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  border: 0;
+  text-transform: uppercase;
+  position: relative;
+}
+.userBtn:hover {
+  background: rgb(230, 180, 0);
+}
+.dropdown {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  width: 100%;
+  border-radius: 5px;
+  background: rgb(220, 220, 220);
+  display: block;
+}
+.dropdown > button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: none;
+  cursor: pointer;
+  text-align: right;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.dropdown:hover {
+  background: rgb(210, 210, 210);
+}
 /* -----HOME-PAGE------ */
 
 /* -----CARD-LIST----- */
@@ -187,6 +223,7 @@ nav .logo {
   margin: 20px 0;
 }
 .login-form {
+  background: #fff;
   width: 40%;
   padding: 30px;
   display: flex;
@@ -226,7 +263,7 @@ nav .logo {
 }
 .signUpBtn {
   margin: 20px 0;
-  background: rgb(225, 225, 225);
+  background: rgb(220, 220, 220);
   padding: 10px 25px;
   border-radius: 10px;
   font-size: 17px;
@@ -235,5 +272,5 @@ nav .logo {
   width: 100%;
 }
 .signUpBtn:hover {
-  background: rgb(220, 220, 220);
+  background: rgb(215, 215, 215);
 }

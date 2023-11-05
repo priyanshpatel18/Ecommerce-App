@@ -1,7 +1,8 @@
 import Customer from "../models/customerModel.js";
+import * as UserService from "../service/auth.js";
 
-// Create Customer
-export const createCustomer = async (req, res) => {
+// SignUp
+export const SignUp = async (req, res) => {
   try {
     const newCustomer = req.body;
     await Customer.create(newCustomer);
@@ -11,35 +12,28 @@ export const createCustomer = async (req, res) => {
   }
 };
 
-// Read Customer
-export const getCustomer = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const doc = await Customer.findById(id);
-    res.status(201).json(doc);
-  } catch (error) {
-    res.status(500).json({ message: error });
-  }
-};
+// Login Customer
+export const Login = async (req, res) => {
+  // Get Values from Input
+  const { email, password } = req.body;
 
-// Update Customer
-export const updateCustomer = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const doc = await Customer.findByIdAndUpdate(id, req.body, { new: true });
-    res.status(201).json(doc);
-  } catch (error) {
-    res.status(500).json({ message: error });
-  }
-};
+  // Check if user exist
+  const customerEmail = await Customer.findOne({ email });
+  const customer = await Customer.findOne({ email, password });
 
-// Delete Customer
-export const deleteCustomer = async (req, res) => {
-  try {
-    const { id } = req.params.id;
-    const doc = await Customer.findOneAndDelete(id);
-    res.status(201).json(doc);
-  } catch (error) {
-    res.status(500).json({ message: error });
+  if (!customerEmail) {
+    res.status(404).send("Please Sign Up");
+  } else if (!customer) {
+    res.status(401).send("Incorrect Password");
+  } else {
+    // Generate token
+    const token = UserService.setUser(customer);
+    res.cookie("uid", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+    });
+
+    res.status(200).json({ token: token });
   }
 };
