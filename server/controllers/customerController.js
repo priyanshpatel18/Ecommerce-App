@@ -15,7 +15,7 @@ export const SignUp = async (req, res) => {
       res.status(201).json(newCustomer);
     }
   } catch (error) {
-    res.status(400).json("THIS ERROR");
+    res.status(400).json(error);
   }
 };
 
@@ -27,12 +27,15 @@ export const Login = async (req, res) => {
   // Check if user exist
   const customer = await Customer.findOne({ email });
   // const customer = await Customer.findOne({ email, password });
-  const passwordMatch = await bcrypt.compare(password, customer.password);
 
   if (!customer) {
     res.status(404).send("You need to Sign Up First");
-  } else if (!passwordMatch) {
+    return;
+  }
+  const passwordMatch = await bcrypt.compare(password, customer.password);
+  if (!passwordMatch) {
     res.status(401).send("Incorrect Password");
+    return;
   } else {
     // Generate token
     const token = UserService.setUser(customer);
