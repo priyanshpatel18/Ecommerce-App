@@ -4,20 +4,29 @@ import searchIcon from "../assets/searchIcon.png";
 import shoppingCart from "../assets/shoppingCart.png";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import { useSnackbar } from "notistack";
 
 export default function Navbar() {
   const [isLoggedIn, setIsLoggedin] = useState(false);
   const [userName, setUserName] = useState("");
-
   const [showDropdown, setShowDropdown] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleUserBtnClick = () => {
     setShowDropdown(!showDropdown);
   };
 
   const handleLogoutClick = () => {
-    handleLogOut();
-    setShowDropdown(false);
+    try {
+      handleLogOut();
+      enqueueSnackbar("Successfully Logged Out", {
+        variant: "success",
+      });
+      setShowDropdown(false);
+    } catch (error) {
+      setShowDropdown(false);
+      enqueueSnackbar(error, { variant: error });
+    }
   };
 
   function handleLogOut() {

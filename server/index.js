@@ -6,14 +6,13 @@ import productRouter from "./routes/productRouter.js";
 import customerRouter from "./routes/customerRouter.js";
 import vendorRouter from "./routes/vendorRouter.js";
 import cors from "cors";
-// import { isLoggedIn } from "./middlewares/auth.js";
 
 // Authentication
 import cookieParser from "cookie-parser";
 
 // MiddleWares
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(cookieParser());
 

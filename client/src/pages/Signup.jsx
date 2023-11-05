@@ -31,7 +31,7 @@ export default function Signup() {
       })
       .catch((err) => {
         setLoading(false);
-        enqueueSnackbar("Error", { variant: "error" });
+        enqueueSnackbar(err.response.data, { variant: "error" });
         redirect("/signup");
       });
   }
@@ -51,7 +51,7 @@ export default function Signup() {
             type="text"
             value={customerName}
             id="customerName"
-            placeholder="First and last name"
+            placeholder="First Name"
             onChange={(e) => setCustomerName(e.target.value)}
           />
           <label htmlFor="email">Email Address</label>
