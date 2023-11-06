@@ -20,7 +20,7 @@ export default function Login() {
 
     setLoading(true);
     axios
-      .post(`http://localhost:8080/customer/login`, data)
+      .post(`http://localhost:8080/user/login`, data)
       .then((response) => {
         // Set Token for User
         const { token } = response.data;

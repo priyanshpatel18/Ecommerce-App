@@ -5,7 +5,7 @@ import axios from "axios";
 import { useSnackbar } from "notistack";
 
 export default function Signup() {
-  const [customerName, setCustomerName] = useState("");
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -14,14 +14,14 @@ export default function Signup() {
 
   async function handleSubmit() {
     const data = {
-      customerName,
+      userName,
       email,
       password,
     };
 
     setLoading(true);
     axios
-      .post(`http://localhost:8080/customer/signup`, data)
+      .post(`http://localhost:8080/user/signup`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Account Created Successfully", {
@@ -44,15 +44,15 @@ export default function Signup() {
         </Link>
         <div className="login-form">
           <h2>Create Account</h2>
-          <label htmlFor="customerName">Your Name</label>
+          <label htmlFor="userName">Your Name</label>
           <input
             autoFocus
             required
             type="text"
-            value={customerName}
-            id="customerName"
+            value={userName}
+            id="userName"
             placeholder="First Name"
-            onChange={(e) => setCustomerName(e.target.value)}
+            onChange={(e) => setUserName(e.target.value)}
           />
           <label htmlFor="email">Email Address</label>
           <input

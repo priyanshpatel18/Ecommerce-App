@@ -1,8 +1,8 @@
 import { Schema, model } from "mongoose";
 import bcrypt from "bcrypt";
 
-const customerSchema = new Schema({
-  customerName: {
+const userSchema = new Schema({
+  userName: {
     type: String,
     required: true,
   },
@@ -17,7 +17,7 @@ const customerSchema = new Schema({
   },
 });
 
-customerSchema.pre("save", async function (next) {
+userSchema.pre("save", async function (next) {
   try {
     // Generate Salt
     const salt = await bcrypt.genSalt(10);
@@ -31,6 +31,6 @@ customerSchema.pre("save", async function (next) {
   }
 });
 
-const Customer = model("Customer", customerSchema);
+const User = model("User", userSchema);
 
-export default Customer;
+export default User;

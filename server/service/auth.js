@@ -2,13 +2,13 @@ import jwt from "jsonwebtoken";
 import { SECRET_KEY } from "../config.js";
 
 // Setting Token For User
-export const setUser = (customer) => {
+export const setUser = (user) => {
   return jwt.sign(
     {
-      _id: customer._id,
-      email: customer.email,
-      userName: customer.customerName,
-      password: customer.password,
+      _id: user._id,
+      email: user.email,
+      userName: user.userName,
+      password: user.password,
     },
     SECRET_KEY
   );
