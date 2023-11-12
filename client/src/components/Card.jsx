@@ -5,16 +5,12 @@ export default function Card({ Object }) {
     <div className="wrapper">
       <h2>{Object.heading}</h2>
       <div className="boxes">
-        {Object.items.map((item, index) => (
-          <a key={index} href="/">
-            <div
-              style={{
-                backgroundImage: `url(${item.url})`,
-              }}
-            ></div>
-            <span>{item.text}</span>
-          </a>
-        ))}
+        <a href="/" onClick={() => ({ type: `${Object.dispatch}` })}>
+          <div
+            className="thumbnail"
+            style={{ backgroundImage: `url(${Object.thumbnail})` }}
+          ></div>
+        </a>
       </div>
     </div>
   );
