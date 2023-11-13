@@ -11,6 +11,7 @@
   width: 100%;
   min-height: 100vh;
   position: relative;
+  margin-top: 10vh;
 }
 
 body {
@@ -24,16 +25,17 @@ a {
 
 /* -----NAVBAR----- */
 nav {
-  z-index: 99;
-  background: #000;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 9999;
+  background: #000;
   width: 100%;
   padding: 5px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 10vh;
 }
 nav .logo {
   width: 70px;
@@ -51,6 +53,7 @@ nav .logo {
   outline: 3px solid rgb(240, 165, 70);
 }
 .searchBar .productSearch {
+  background: #e3e6e6;
   width: 600px;
   padding: 10px 20px;
   height: 50px;
@@ -103,7 +106,7 @@ nav .logo {
   cursor: pointer;
 }
 .shoppingCart div {
-  color: #fff;
+  color: #e3e6e6;
   top: -3px;
   left: 53%;
   transform: translateX(-50%);
@@ -155,7 +158,6 @@ nav .logo {
 
 /* -----CARD-LIST----- */
 .card-container {
-  margin: 80px 30px;
   justify-content: center;
   display: flex;
   gap: 30px;
@@ -193,7 +195,7 @@ nav .logo {
 }
 
 .thumbnail:hover {
-  transform: scale(1.03);
+  transform: scale(1.01);
 }
 
 /* -----LOGIN-PAGE----- */
@@ -265,4 +267,114 @@ nav .logo {
 }
 .signUpBtn:hover {
   background: rgb(215, 215, 215);
+}
+
+/* -----PRODUCT-CONTAINER----- */
+.productsContainer {
+  width: 100%;
+  display: flex;
+  margin-top: 10vh;
+}
+
+.productsContainer .sortContainer {
+  background: rgb(205, 205, 205);
+  min-height: 100vh;
+  flex: 1.5;
+  padding: 10px;
+}
+
+.productsContainer .listContainer {
+  flex: 8.5;
+  padding: 30px;
+}
+
+.productsContainer .productList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product {
+  width: 100%;
+  padding: 15px;
+  background: #fff;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageContainer {
+  width: 250px;
+  height: 250px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product:hover .imageContainer img {
+  transform: scale(1.03);
+}
+
+.productList h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.discountedPrice {
+  font-size: 1.2rem;
+  color: #e44d26;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.mrpPrice {
+  text-decoration: line-through;
+  color: #555;
+}
+
+.description {
+  margin-top: 10px;
+  color: #333;
+}
+
+/* -----DROPDOWN----- */
+.dropDown {
+  padding: 5px;
+  margin: 10px 0;
+}
+.options {
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 2px 0;
+}
+/* -----CHECKBOX----- */
+.priceFilter input,
+.discountFilter input {
+  margin: 10px 0;
+}
+.priceFilter,
+.discountFilter {
+  margin-bottom: 10px;
+}
+
+.filterBtn {
+  background: rgb(250, 200, 0);
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  text-transform: uppercase;
+  display: block;
+}
+.filterBtn:hover {
+  background: rgb(230, 180, 0);
 }

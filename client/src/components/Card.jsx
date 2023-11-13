@@ -1,11 +1,13 @@
 import React from "react";
 
 export default function Card({ Object }) {
+
+
   return (
     <div className="wrapper">
       <h2>{Object.heading}</h2>
       <div className="boxes">
-        <a href="/" onClick={() => ({ type: `${Object.dispatch}` })}>
+        <a href={`/products/${Object.link}`}>
           <div
             className="thumbnail"
             style={{ backgroundImage: `url(${Object.thumbnail})` }}
