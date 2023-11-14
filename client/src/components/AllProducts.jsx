@@ -1,37 +1,15 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard.jsx";
 import Dropdown from "../components/Dropdown.jsx";
 import PriceFilterPhone from "../components/PriceFilterPhone.jsx";
 import DiscountFilter from "../components/DiscountFilter.jsx";
 
-export default function Products() {
-  const [originalProducts, setOriginalProducts] = useState([]);
-  const [products, setProducts] = useState([]);
-  const { category } = useParams();
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/products")
-      .then((res) => {
-        const categorizedProducts = res.data.filter(
-          (product) => product.category === category
-        );
-        setOriginalProducts(categorizedProducts);
-        setProducts(categorizedProducts);
-      })
-      .catch((err) => console.error("Error Fetching Products: ", err));
-  }, [category]);
-
+export default function AllProducts({
+  originalProducts,
+  products,
+  setProducts,
+}) {
   return (
     <>
-      <Navbar
-        products={products}
-        setProducts={setProducts}
-        originalProducts={originalProducts}
-      />
       <div className="productsContainer">
         <div className="sortContainer">
           <div className="categorySort">

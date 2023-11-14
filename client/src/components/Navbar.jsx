@@ -6,11 +6,16 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 
-export default function Navbar() {
+export default function Navbar({
+  setProducts,
+  originalProducts,
+  setShowProductsList,
+}) {
   const [isLoggedIn, setIsLoggedin] = useState(false);
   const [userName, setUserName] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
+  const [searchItems, setSearchItems] = useState("");
 
   const handleUserBtnClick = () => {
     setShowDropdown(!showDropdown);
@@ -56,10 +61,21 @@ export default function Navbar() {
     decodeToken();
   }, []);
 
+  function Filter(e) {
+    setShowProductsList(true);
+    e.preventDefault();
+    const filteredProducts = originalProducts.filter(
+      (f) =>
+        f.name.toLowerCase().includes(searchItems) ||
+        f.description.toLowerCase().includes(searchItems)
+    );
+    setProducts(filteredProducts);
+  }
+
   return (
     <>
       <nav>
-        <a href="/">
+        <a href="/" onClick={() => setShowProductsList(false)}>
           <img src={logo} alt="logo" className="logo" />
         </a>
         <form action="/products" className="searchBar">
@@ -68,8 +84,9 @@ export default function Navbar() {
             placeholder="Search ShopHub.com"
             className="productSearch"
             required
+            onChange={(e) => setSearchItems(e.target.value.toLowerCase())}
           />
-          <button type="submit" className="submitBtn">
+          <button type="submit" className="submitBtn" onClick={Filter}>
             <img src={searchIcon} alt="search" className="searchIcon" />
           </button>
         </form>
