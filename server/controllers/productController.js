@@ -21,6 +21,17 @@ export const getProducts = async (req, res) => {
   }
 };
 
+export const getOneProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findById({ _id: id });
+    res.status(201).json(product);
+
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+};
+
 // Update Product
 export const updateProduct = async (req, res) => {
   try {

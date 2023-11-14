@@ -8,17 +8,17 @@ export default function Home() {
   const [originalProducts, setOriginalProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const [showProductsList, setShowProductsList] = useState(false);
-
+  
   useEffect(() => {
     axios
-      .get("http://localhost:8080/products")
-      .then((res) => {
-        setOriginalProducts(res.data);
-        setProducts(res.data);
-      })
-      .catch((err) => console.error(err));
+    .get("http://localhost:8080/products")
+    .then((res) => {
+      setOriginalProducts(res.data);
+      setProducts(res.data);
+    })
+    .catch((err) => console.error(err));
   }, []);
-
+  
   return (
     <>
       <div className="main">

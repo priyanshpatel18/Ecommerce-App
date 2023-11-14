@@ -378,3 +378,61 @@ nav .logo {
 .filterBtn:hover {
   background: rgb(230, 180, 0);
 }
+/* -----PRODUCT-DISPLAY----- */
+.productDisplayContainer {
+  display: flex;
+  margin-top: 10vh;
+}
+.productDisplayContainer > .imageContainer {
+  background: #fff;
+  width: 100%;
+  height: calc(90vh - 60px);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+}
+.productImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.detailsContainer {
+  flex: 1;
+  padding: 30px;
+}
+.detailsContainer .productName {
+  text-transform: uppercase;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.detailsContainer .productDescription {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.detailsContainer .priceContainer {
+  display: flex;
+  align-items: center;
+}
+.detailsContainer .productDiscount {
+  font-weight: 300;
+  font-size: 22px;
+  color: #ff4d20;
+  margin-right: 10px;
+}
+.detailsContainer .productPrice {
+  font-weight: 500;
+  font-size: 30px;
+}
+.detailsContainer .actualPrice {
+  font-weight: 300;
+  font-size: 14px;
+  text-decoration: line-through;
+  margin-bottom: 10px;
+}
+.inStock {
+  color: rgb(113, 192, 95);
+  font-size: 20px;
+  font-weight: 400;
+}
