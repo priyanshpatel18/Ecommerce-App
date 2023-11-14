@@ -8,7 +8,6 @@ import Cookies from "js-cookie";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
   const redirect = useNavigate();
 
@@ -17,8 +16,6 @@ export default function Login() {
       email,
       password,
     };
-
-    setLoading(true);
     axios
       .post(`http://localhost:8080/user/login`, data)
       .then((response) => {
@@ -26,14 +23,12 @@ export default function Login() {
         const { token } = response.data;
         Cookies.set("token", token, { expires: 7 });
 
-        setLoading(false);
         enqueueSnackbar("Welcome to ShopHub", {
           variant: "success",
         });
         redirect("/");
       })
       .catch((err) => {
-        setLoading(false);
         enqueueSnackbar(err.response.data, { variant: "error" });
         if (err.response.status === 404) {
           redirect("/signup");

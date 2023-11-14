@@ -7,7 +7,7 @@ import Dropdown from "../components/Dropdown.jsx";
 import PriceFilterPhone from "../components/PriceFilterPhone.jsx";
 import DiscountFilter from "../components/DiscountFilter.jsx";
 
-export default function Products() {
+export default function Products({ setShowProductsList }) {
   const [originalProducts, setOriginalProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const { category } = useParams();
@@ -28,9 +28,9 @@ export default function Products() {
   return (
     <>
       <Navbar
-        products={products}
         setProducts={setProducts}
         originalProducts={originalProducts}
+        setShowProductsList={setShowProductsList}
       />
       <div className="productsContainer">
         <div className="sortContainer">

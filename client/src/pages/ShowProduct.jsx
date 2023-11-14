@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar.jsx";
 
-const ShowProduct = () => {
+const ShowProduct = ({ setShowProductsList }) => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
 
@@ -18,7 +18,7 @@ const ShowProduct = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar setShowProductsList={setShowProductsList} />
       <div className="productDisplayContainer">
         <div className="imageContainer">
           <img

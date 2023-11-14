@@ -32,9 +32,9 @@ export default function AllProducts({
           </div>
         </div>
         <div className="listContainer">
-          <h2>Showing {products.length} Results</h2>
+          <h2>Showing {products?.length} Results</h2>
           <div className="productList">
-            {products.map((product, index) => (
+            {products?.map((product, index) => (
               <ProductCard product={product} key={index} />
             ))}
           </div>

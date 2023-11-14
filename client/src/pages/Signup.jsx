@@ -8,7 +8,6 @@ export default function Signup() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
   const redirect = useNavigate();
 
@@ -19,18 +18,15 @@ export default function Signup() {
       password,
     };
 
-    setLoading(true);
     axios
       .post(`http://localhost:8080/user/signup`, data)
       .then(() => {
-        setLoading(false);
         enqueueSnackbar("Account Created Successfully", {
           variant: "success",
         });
         redirect("/login");
       })
       .catch((err) => {
-        setLoading(false);
         enqueueSnackbar(err.response.data, { variant: "error" });
         redirect("/signup");
       });

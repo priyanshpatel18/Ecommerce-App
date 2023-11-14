@@ -7,7 +7,7 @@ export default function Dropdown() {
   const handleSelect = (option) => {
     setSelectedOption(option);
     if (option) {
-      window.location.href = `/products/${option}`;
+      window.location.href = `/products/category/${option}`;
     }
   };
 
