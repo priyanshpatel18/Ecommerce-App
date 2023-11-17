@@ -9,8 +9,12 @@ export const setUser = (user) => {
       email: user.email,
       userName: user.userName,
       password: user.password,
+      cart: user.cart,
     },
-    SECRET_KEY
+    SECRET_KEY,
+    {
+      expiresIn: "7d",
+    }
   );
 };
 

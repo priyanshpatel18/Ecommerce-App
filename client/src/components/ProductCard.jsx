@@ -2,12 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, index }) => (
-  <Link
-    to={`/products/${product._id}`}
-    key={index}
-    className="product"
-    target="_blank"
-  >
+  <Link to={`/products/${product._id}`} key={index} className="product">
     <div className="imageContainer">
       <img src={product.imageUrl} alt="thumbnail" />
     </div>

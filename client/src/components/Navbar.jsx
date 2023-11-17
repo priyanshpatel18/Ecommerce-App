@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import searchIcon from "../assets/searchIcon.png";
 import shoppingCart from "../assets/shoppingCart.png";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
+import axios from "axios";
+import Loader from "./Loader.jsx";
 
 export default function Navbar({
   setProducts,
@@ -16,6 +18,23 @@ export default function Navbar({
   const [showDropdown, setShowDropdown] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
   const [searchItems, setSearchItems] = useState("");
+  const redirect = useNavigate();
+  const [cartCount, setCartCount] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get("http://localhost:8080/user/cart", { withCredentials: true })
+      .then((response) => {
+        setCartCount(response.data.cartCount);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsLoading(false);
+      });
+  }, []);
 
   const handleUserBtnClick = () => {
     setShowDropdown(!showDropdown);
@@ -30,7 +49,7 @@ export default function Navbar({
       setShowDropdown(false);
     } catch (error) {
       setShowDropdown(false);
-      enqueueSnackbar(error, { variant: error });
+      enqueueSnackbar(error, { variant: "error" });
     }
   };
 
@@ -72,46 +91,58 @@ export default function Navbar({
     setProducts(filteredProducts);
   }
 
+  function handleCartIcon() {
+    if (!isLoggedIn) {
+      enqueueSnackbar("You need to Login First", { variant: "error" });
+      return;
+    }
+    redirect("/cart");
+  }
+
   return (
     <>
-      <nav>
-        <a href="/" onClick={() => setShowProductsList(false)}>
-          <img src={logo} alt="logo" className="logo" />
-        </a>
-        <form action="/products" className="searchBar">
-          <input
-            type="text"
-            placeholder="Search ShopHub.com"
-            className="productSearch"
-            required
-            onChange={(e) => setSearchItems(e.target.value.toLowerCase())}
-          />
-          <button type="submit" className="submitBtn" onClick={Filter}>
-            <img src={searchIcon} alt="search" className="searchIcon" />
-          </button>
-        </form>
-        <div className="btnContainer">
-          {isLoggedIn ? (
-            <div className="userBtn" onClick={handleUserBtnClick}>
-              {userName}
-              {showDropdown && (
-                <div className="dropdown">
-                  <button onClick={handleLogoutClick}>Logout</button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <Link className="loginBtn" to="/login">
-              LOGIN
-            </Link>
-          )}
+      {isLoading ? (
+        <Loader isLoading={isLoading} />
+      ) : (
+        <nav>
+          <a href="/" onClick={() => setShowProductsList(false)}>
+            <img src={logo} alt="logo" className="logo" />
+          </a>
+          <form action="/products" className="searchBar">
+            <input
+              type="text"
+              placeholder="Search ShopHub.com"
+              className="productSearch"
+              required
+              onChange={(e) => setSearchItems(e.target.value.toLowerCase())}
+            />
+            <button type="submit" className="submitBtn" onClick={Filter}>
+              <img src={searchIcon} alt="search" className="searchIcon" />
+            </button>
+          </form>
+          <div className="btnContainer">
+            {isLoggedIn ? (
+              <div className="userBtn" onClick={handleUserBtnClick}>
+                {userName}
+                {showDropdown && (
+                  <div className="dropdown">
+                    <button onClick={handleLogoutClick}>Logout</button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link className="loginBtn" to="/login">
+                LOGIN
+              </Link>
+            )}
 
-          <button className="shoppingCart">
-            <img src={shoppingCart} alt="cart" />
-            <div>10</div>
-          </button>
-        </div>
-      </nav>
+            <button className="shoppingCart" onClick={handleCartIcon}>
+              <img src={shoppingCart} alt="cart" />
+              <div>{cartCount || 0}</div>
+            </button>
+          </div>
+        </nav>
+      )}
     </>
   );
 }

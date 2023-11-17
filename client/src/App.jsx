@@ -5,6 +5,7 @@ import Signup from "./pages/Signup.jsx";
 import Products from "./pages/Products.jsx";
 import ShowProduct from "./pages/ShowProduct.jsx";
 import { useState } from "react";
+import Cart from "./pages/Cart.jsx";
 
 export default function App() {
   const [showProductsList, setShowProductsList] = useState(false);
@@ -28,8 +29,12 @@ export default function App() {
           element={<Products setShowProductsList={setShowProductsList} />}
         />
         <Route
-          path="/products/:id"
+          path="/products/:productId"
           element={<ShowProduct setShowProductsList={setShowProductsList} />}
+        />
+        <Route
+          path="/cart"
+          element={<Cart setShowProductsList={setShowProductsList} />}
         />
       </Routes>
     </>

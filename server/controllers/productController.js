@@ -23,10 +23,9 @@ export const getProducts = async (req, res) => {
 
 export const getOneProduct = async (req, res) => {
   try {
-    const { id } = req.params;
-    const product = await Product.findById({ _id: id });
+    const { productId } = req.params;
+    const product = await Product.findOne({ _id: productId });
     res.status(201).json(product);
-
   } catch (error) {
     res.status(500).json({ message: error });
   }
@@ -35,8 +34,10 @@ export const getOneProduct = async (req, res) => {
 // Update Product
 export const updateProduct = async (req, res) => {
   try {
-    const { id } = req.params.id;
-    const doc = await Product.findOneAndUpdate(id, req.body, { new: true });
+    const { productId } = req.params.id;
+    const doc = await Product.findOneAndUpdate({ _id: productId }, req.body, {
+      new: true,
+    });
     res.status(201).json(doc);
   } catch (error) {
     res.status(500).json({ message: error });
@@ -46,8 +47,8 @@ export const updateProduct = async (req, res) => {
 // Delete Product
 export const deleteProduct = async (req, res) => {
   try {
-    const { id } = req.params.id;
-    const doc = await Product.findOneAndDelete(id);
+    const { productId } = req.params.id;
+    const doc = await Product.findOneAndDelete({ _id: productId });
     res.status(201).json(doc);
   } catch (error) {
     res.status(500).json({ message: error });

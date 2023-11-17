@@ -5,8 +5,8 @@ import * as productController from "../controllers/productController.js";
 productRouter
   .post("/", productController.createProduct)
   .get("/", productController.getProducts)
-  .get("/:id", productController.getOneProduct)
-  .put("/:id", productController.updateProduct)
-  .delete("/:id", productController.deleteProduct);
+  .get("/:productId", productController.getOneProduct)
+  .put("/:productId", productController.updateProduct)
+  .delete("/:productId", productController.deleteProduct);
 
 export default productRouter;

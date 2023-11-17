@@ -11,7 +11,6 @@
   width: 100%;
   min-height: 100vh;
   position: relative;
-  margin-top: 10vh;
 }
 
 body {
@@ -22,13 +21,66 @@ a {
   text-decoration: none;
   color: #000;
 }
-
-/* -----NAVBAR----- */
-nav {
+/* -----LOADER----- */
+.loader-container {
+  background: #e3e6e6;
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 9999;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #000;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid;
+  border-color: rgb(230, 180, 0) transparent;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-container.visible {
+  opacity: 1;
+}
+
+.loader-container.hidden {
+  opacity: 0;
+}
+
+/* -----NAVBAR----- */
+nav {
   background: #000;
   width: 100%;
   padding: 5px 20px;
@@ -273,7 +325,6 @@ nav .logo {
 .productsContainer {
   width: 100%;
   display: flex;
-  margin-top: 10vh;
 }
 
 .productsContainer .sortContainer {
@@ -381,7 +432,6 @@ nav .logo {
 /* -----PRODUCT-DISPLAY----- */
 .productDisplayContainer {
   display: flex;
-  margin-top: 10vh;
 }
 .productDisplayContainer > .imageContainer {
   background: #fff;
@@ -431,8 +481,26 @@ nav .logo {
   text-decoration: line-through;
   margin-bottom: 10px;
 }
-.inStock {
+.productStock {
   color: rgb(113, 192, 95);
   font-size: 20px;
   font-weight: 400;
+  margin-bottom: 15px;
+}
+.addToCart {
+  background: rgb(250, 200, 0);
+  padding: 15px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  text-transform: uppercase;
+  display: block;
+}
+.addToCart:hover {
+  background: rgb(230, 180, 0);
+}
+
+/* -----CART_CONTAINER----- */
+.cartContainer {
 }
