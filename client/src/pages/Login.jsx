@@ -29,11 +29,11 @@ export default function Login() {
         expirationDate.setDate(expirationDate.getDate() + 7);
         Cookies.set("token", token, { expires: expirationDate });
 
+        setIsLoading(false);
         enqueueSnackbar("Welcome to ShopHub", {
           variant: "success",
         });
         redirect("/");
-        setIsLoading(false);
       })
       .catch((err) => {
         enqueueSnackbar(err.response.data, { variant: "error" });

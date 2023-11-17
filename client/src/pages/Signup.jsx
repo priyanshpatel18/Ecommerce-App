@@ -26,16 +26,16 @@ export default function Signup() {
     axios
       .post(`http://localhost:8080/user/signup`, data)
       .then(() => {
+        setIsLoading(false);
         enqueueSnackbar("Account Created Successfully", {
           variant: "success",
         });
         redirect("/login");
-        setIsLoading(false);
       })
       .catch((err) => {
+        setIsLoading(false);
         enqueueSnackbar(err.response.data, { variant: "error" });
         redirect("/signup");
-        setIsLoading(false);
       });
   }
 

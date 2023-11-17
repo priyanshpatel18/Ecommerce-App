@@ -36,11 +36,11 @@ const ShowProduct = ({ setShowProductsList, cartCount }) => {
         withCredentials: true,
       })
       .then(() => {
+        setIsLoading(false);
         redirect(-1);
         enqueueSnackbar("Added to Cart", {
           variant: "success",
         });
-        setIsLoading(false);
       })
       .catch((err) => {
         console.error(err);
