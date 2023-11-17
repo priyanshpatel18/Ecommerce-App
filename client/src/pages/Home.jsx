@@ -28,26 +28,23 @@ export default function Home() {
 
   return (
     <>
-      {isLoading ? (
-        <Loader isLoading={isLoading} />
-      ) : (
-        <div className="main">
-          <Navbar
+      {isLoading ? <Loader isLoading={isLoading} /> : <></>}
+      <div className="main">
+        <Navbar
+          originalProducts={originalProducts}
+          setProducts={setProducts}
+          setShowProductsList={setShowProductsList}
+        />
+        {showProductsList ? (
+          <AllProducts
             originalProducts={originalProducts}
+            products={products}
             setProducts={setProducts}
-            setShowProductsList={setShowProductsList}
           />
-          {showProductsList ? (
-            <AllProducts
-              originalProducts={originalProducts}
-              products={products}
-              setProducts={setProducts}
-            />
-          ) : (
-            <CardList />
-          )}
-        </div>
-      )}
+        ) : (
+          <CardList />
+        )}
+      </div>
     </>
   );
 }

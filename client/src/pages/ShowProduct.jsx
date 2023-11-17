@@ -51,48 +51,38 @@ const ShowProduct = ({ setShowProductsList, cartCount }) => {
 
   return (
     <>
-      {isLoading ? (
-        <Loader isLoading={isLoading} />
-      ) : (
-        <>
-          <Navbar
-            setShowProductsList={setShowProductsList}
-            cartCount={cartCount}
+      {isLoading ? <Loader isLoading={isLoading} /> : <> </>}
+      <Navbar setShowProductsList={setShowProductsList} cartCount={cartCount} />
+      <div className="productDisplayContainer">
+        <div className="imageContainer">
+          <img
+            src={product.imageUrl}
+            alt="thumbnail"
+            className="productImage"
           />
-          <div className="productDisplayContainer">
-            <div className="imageContainer">
-              <img
-                src={product.imageUrl}
-                alt="thumbnail"
-                className="productImage"
-              />
-            </div>
-            <div className="detailsContainer">
-              <h1 className="productName">{product.name}</h1>
-              <p className="productDescription">{product.description}</p>
-              <div className="priceContainer">
-                <h2 className="productDiscount">-{product.discount}%</h2>
-                <h2 className="productPrice">
-                  ₹
-                  {(
-                    product.price -
-                    (product.price * product.discount) / 100
-                  ).toFixed(2)}
-                </h2>
-              </div>
-              <h2 className="actualPrice">M.R.P. {product.price}</h2>
-              <p className="productStock">
-                {product.quantity > 0 && (
-                  <span className="inStock">In Stock</span>
-                )}
-              </p>
-              <form className="btnContainer" onSubmit={handleAddToCart}>
-                <button className="addToCart">Add To Cart</button>
-              </form>
-            </div>
-          </div>{" "}
-        </>
-      )}
+        </div>
+        <div className="detailsContainer">
+          <h1 className="productName">{product.name}</h1>
+          <p className="productDescription">{product.description}</p>
+          <div className="priceContainer">
+            <h2 className="productDiscount">-{product.discount}%</h2>
+            <h2 className="productPrice">
+              ₹
+              {(
+                product.price -
+                (product.price * product.discount) / 100
+              ).toFixed(2)}
+            </h2>
+          </div>
+          <h2 className="actualPrice">M.R.P. {product.price}</h2>
+          <p className="productStock">
+            {product.quantity > 0 && <span className="inStock">In Stock</span>}
+          </p>
+          <form className="btnContainer" onSubmit={handleAddToCart}>
+            <button className="addToCart">Add To Cart</button>
+          </form>
+        </div>
+      </div>
     </>
   );
 };

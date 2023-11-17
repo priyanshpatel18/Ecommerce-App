@@ -34,48 +34,42 @@ export default function Products({ setShowProductsList }) {
 
   return (
     <>
-      {isLoading ? (
-        <Loader isLoading={isLoading} />
-      ) : (
-        <>
-          {" "}
-          <Navbar
-            setProducts={setProducts}
-            originalProducts={originalProducts}
-            setShowProductsList={setShowProductsList}
-          />
-          <div className="productsContainer">
-            <div className="sortContainer">
-              <div className="categorySort">
-                <h3>Category</h3>
-                <Dropdown />
-              </div>
-              <div className="priceSort">
-                <h3>Price</h3>
-                <PriceFilterPhone
-                  originalProducts={originalProducts}
-                  setProducts={setProducts}
-                />
-              </div>
-              <div className="discountSort">
-                <h3>Discount</h3>
-                <DiscountFilter
-                  originalProducts={originalProducts}
-                  setProducts={setProducts}
-                />
-              </div>
-            </div>
-            <div className="listContainer">
-              <h2>Showing {products.length} Results</h2>
-              <div className="productList">
-                {products.map((product, index) => (
-                  <ProductCard product={product} key={index} />
-                ))}
-              </div>
-            </div>
+      {isLoading ? <Loader isLoading={isLoading} /> : <> </>}
+      <Navbar
+        setProducts={setProducts}
+        originalProducts={originalProducts}
+        setShowProductsList={setShowProductsList}
+      />
+      <div className="productsContainer">
+        <div className="sortContainer">
+          <div className="categorySort">
+            <h3>Category</h3>
+            <Dropdown />
           </div>
-        </>
-      )}
+          <div className="priceSort">
+            <h3>Price</h3>
+            <PriceFilterPhone
+              originalProducts={originalProducts}
+              setProducts={setProducts}
+            />
+          </div>
+          <div className="discountSort">
+            <h3>Discount</h3>
+            <DiscountFilter
+              originalProducts={originalProducts}
+              setProducts={setProducts}
+            />
+          </div>
+        </div>
+        <div className="listContainer">
+          <h2>Showing {products.length} Results</h2>
+          <div className="productList">
+            {products.map((product, index) => (
+              <ProductCard product={product} key={index} />
+            ))}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -23,20 +23,15 @@ export default function Cart() {
 
   return (
     <>
-      {isLoading ? (
-        <Loader isLoading={isLoading} />
-      ) : (
-        <>
-          <Navbar />
-          <div className="cartContainer">
-            {cartItems.length > 0 ? (
-              cartItems.map((item, index) => <p key={index}>{item.name}</p>)
-            ) : (
-              <p>No items in the cart</p>
-            )}
-          </div>{" "}
-        </>
-      )}
+      {isLoading ? <Loader isLoading={isLoading} /> : <> </>}
+      <Navbar />
+      <div className="cartContainer">
+        {cartItems.length > 0 ? (
+          cartItems.map((item, index) => <p key={index}>{item.name}</p>)
+        ) : (
+          <p>No items in the cart</p>
+        )}
+      </div>
     </>
   );
 }

@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import axios from "axios";
-import Loader from "./Loader.jsx";
 
 export default function Navbar({
   setProducts,
@@ -101,48 +100,44 @@ export default function Navbar({
 
   return (
     <>
-      {isLoading ? (
-        <Loader isLoading={isLoading} />
-      ) : (
-        <nav>
-          <a href="/" onClick={() => setShowProductsList(false)}>
-            <img src={logo} alt="logo" className="logo" />
-          </a>
-          <form action="/products" className="searchBar">
-            <input
-              type="text"
-              placeholder="Search ShopHub.com"
-              className="productSearch"
-              required
-              onChange={(e) => setSearchItems(e.target.value.toLowerCase())}
-            />
-            <button type="submit" className="submitBtn" onClick={Filter}>
-              <img src={searchIcon} alt="search" className="searchIcon" />
-            </button>
-          </form>
-          <div className="btnContainer">
-            {isLoggedIn ? (
-              <div className="userBtn" onClick={handleUserBtnClick}>
-                {userName}
-                {showDropdown && (
-                  <div className="dropdown">
-                    <button onClick={handleLogoutClick}>Logout</button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link className="loginBtn" to="/login">
-                LOGIN
-              </Link>
-            )}
+      <nav>
+        <a href="/" onClick={() => setShowProductsList(false)}>
+          <img src={logo} alt="logo" className="logo" />
+        </a>
+        <form action="/products" className="searchBar">
+          <input
+            type="text"
+            placeholder="Search ShopHub.com"
+            className="productSearch"
+            required
+            onChange={(e) => setSearchItems(e.target.value.toLowerCase())}
+          />
+          <button type="submit" className="submitBtn" onClick={Filter}>
+            <img src={searchIcon} alt="search" className="searchIcon" />
+          </button>
+        </form>
+        <div className="btnContainer">
+          {isLoggedIn ? (
+            <div className="userBtn" onClick={handleUserBtnClick}>
+              {userName}
+              {showDropdown && (
+                <div className="dropdown">
+                  <button onClick={handleLogoutClick}>Logout</button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link className="loginBtn" to="/login">
+              LOGIN
+            </Link>
+          )}
 
-            <button className="shoppingCart" onClick={handleCartIcon}>
-              <img src={shoppingCart} alt="cart" />
-              <div>{cartCount || 0}</div>
-            </button>
-          </div>
-        </nav>
-      )}
+          <button className="shoppingCart" onClick={handleCartIcon}>
+            <img src={shoppingCart} alt="cart" />
+            <div>{cartCount || 0}</div>
+          </button>
+        </div>
+      </nav>
     </>
   );
 }

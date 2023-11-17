@@ -29,11 +29,11 @@ export default function Login() {
         expirationDate.setDate(expirationDate.getDate() + 7);
         Cookies.set("token", token, { expires: expirationDate });
 
-        setIsLoading(false);
         enqueueSnackbar("Welcome to ShopHub", {
           variant: "success",
         });
         redirect("/");
+        setIsLoading(false);
       })
       .catch((err) => {
         enqueueSnackbar(err.response.data, { variant: "error" });
@@ -47,49 +47,46 @@ export default function Login() {
 
   return (
     <>
-      {isLoading ? (
-        <Loader isLoading={isLoading} />
-      ) : (
-        <div className="login-container">
-          <Link to="/">
-            <img src={logo} alt="logo" className="logo" />
-          </Link>
-          <form className="login-form" onSubmit={handleLogin}>
-            <h2>Login</h2>
-            <label htmlFor="email">Email Address</label>
-            <input
-              autoFocus
-              required
-              type="text"
-              id="email"
-              name="email"
-              placeholder="example@gmail.com"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="password">Password</label>
-            <input
-              required
-              type="password"
-              name="password"
-              id="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type="submit" className="loginBtn">
-              LOGIN
-            </button>
-          </form>
-          <div className="signUpLink">
-            <div className="title">
-              <div id="line1" className="line"></div>
-              <p>New to ShopHub?</p>
-              <div id="line1" className="line"></div>
-            </div>
-            <Link to="/signup">
-              <button className="signUpBtn">CREATE ACCOUNT</button>
-            </Link>
+      {isLoading ? <Loader isLoading={isLoading} /> : <></>}
+      <div className="login-container">
+        <Link to="/">
+          <img src={logo} alt="logo" className="logo" />
+        </Link>
+        <form className="login-form" onSubmit={handleLogin}>
+          <h2>Login</h2>
+          <label htmlFor="email">Email Address</label>
+          <input
+            autoFocus
+            required
+            type="text"
+            id="email"
+            name="email"
+            placeholder="example@gmail.com"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            required
+            type="password"
+            name="password"
+            id="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit" className="loginBtn">
+            LOGIN
+          </button>
+        </form>
+        <div className="signUpLink">
+          <div className="title">
+            <div id="line1" className="line"></div>
+            <p>New to ShopHub?</p>
+            <div id="line1" className="line"></div>
           </div>
+          <Link to="/signup">
+            <button className="signUpBtn">CREATE ACCOUNT</button>
+          </Link>
         </div>
-      )}
+      </div>
     </>
   );
 }
