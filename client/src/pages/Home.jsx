@@ -18,7 +18,9 @@ export default function Home() {
       .then((res) => {
         setOriginalProducts(res.data);
         setProducts(res.data);
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       })
       .catch((err) => {
         console.error(err);
@@ -31,7 +33,6 @@ export default function Home() {
       {isLoading ? <Loader isLoading={isLoading} /> : <></>}
       <div className="main">
         <Navbar
-          originalProducts={originalProducts}
           setProducts={setProducts}
           setShowProductsList={setShowProductsList}
         />

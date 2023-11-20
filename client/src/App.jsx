@@ -30,11 +30,21 @@ export default function App() {
         />
         <Route
           path="/products/:productId"
-          element={<ShowProduct setShowProductsList={setShowProductsList} />}
+          element={
+            <ShowProduct
+              setShowProductsList={setShowProductsList}
+              showProductsList={showProductsList}
+            />
+          }
         />
         <Route
           path="/cart"
-          element={<Cart setShowProductsList={setShowProductsList} />}
+          element={
+            <Cart
+              setShowProductsList={setShowProductsList}
+              showProductsList={showProductsList}
+            />
+          }
         />
       </Routes>
     </>

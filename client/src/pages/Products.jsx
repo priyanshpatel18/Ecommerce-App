@@ -24,7 +24,9 @@ export default function Products({ setShowProductsList }) {
         );
         setOriginalProducts(categorizedProducts);
         setProducts(categorizedProducts);
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       })
       .catch((err) => {
         console.error("Error Fetching Products: ", err);
@@ -51,12 +53,14 @@ export default function Products({ setShowProductsList }) {
             <PriceFilterPhone
               originalProducts={originalProducts}
               setProducts={setProducts}
+              setIsLoading={setIsLoading}
             />
           </div>
           <div className="discountSort">
             <h3>Discount</h3>
             <DiscountFilter
               originalProducts={originalProducts}
+              setIsLoading={setIsLoading}
               setProducts={setProducts}
             />
           </div>

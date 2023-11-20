@@ -6,12 +6,9 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import axios from "axios";
+import Loader from "./Loader";
 
-export default function Navbar({
-  setProducts,
-  originalProducts,
-  setShowProductsList,
-}) {
+export default function Navbar({ setProducts, setShowProductsList }) {
   const [isLoggedIn, setIsLoggedin] = useState(false);
   const [userName, setUserName] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -20,6 +17,7 @@ export default function Navbar({
   const redirect = useNavigate();
   const [cartCount, setCartCount] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [originalProducts, setOriginalProducts]=useState([])
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,7 +25,20 @@ export default function Navbar({
       .get("http://localhost:8080/user/cart", { withCredentials: true })
       .then((response) => {
         setCartCount(response.data.cartCount);
+      })
+      .catch((err) => {
+        console.error(err);
         setIsLoading(false);
+      });
+
+    setIsLoading(true);
+    axios
+      .get("http://localhost:8080/products")
+      .then((res) => {
+        setOriginalProducts(res.data);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       })
       .catch((err) => {
         console.error(err);
@@ -79,15 +90,20 @@ export default function Navbar({
     decodeToken();
   }, []);
 
-  function Filter(e) {
+  function handleSearchFilter(e) {
     setShowProductsList(true);
+    setIsLoading(true);
     e.preventDefault();
-    const filteredProducts = originalProducts.filter(
-      (f) =>
-        f.name.toLowerCase().includes(searchItems) ||
-        f.description.toLowerCase().includes(searchItems)
-    );
-    setProducts(filteredProducts);
+
+    setTimeout(() => {
+      const filteredProducts = originalProducts.filter(
+        (f) =>
+          f.name.toLowerCase().includes(searchItems) ||
+          f.description.toLowerCase().includes(searchItems)
+      );
+      setProducts(filteredProducts);
+      setIsLoading(false);
+    }, 250);
   }
 
   function handleCartIcon() {
@@ -100,6 +116,7 @@ export default function Navbar({
 
   return (
     <>
+      {isLoading ? <Loader isLoading={isLoading} /> : <></>}
       <nav>
         <a href="/" onClick={() => setShowProductsList(false)}>
           <img src={logo} alt="logo" className="logo" />
@@ -112,7 +129,11 @@ export default function Navbar({
             required
             onChange={(e) => setSearchItems(e.target.value.toLowerCase())}
           />
-          <button type="submit" className="submitBtn" onClick={Filter}>
+          <button
+            type="submit"
+            className="submitBtn"
+            onClick={handleSearchFilter}
+          >
             <img src={searchIcon} alt="search" className="searchIcon" />
           </button>
         </form>

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useSnackbar } from "notistack";
 
-export default function PriceFilterPhone({ originalProducts, setProducts }) {
+export default function PriceFilterPhone({
+  originalProducts,
+  setProducts,
+  setIsLoading,
+}) {
   const [selectedRange, setSelectedRange] = useState(null);
   const { enqueueSnackbar } = useSnackbar();
 
@@ -10,38 +14,43 @@ export default function PriceFilterPhone({ originalProducts, setProducts }) {
   }
 
   function handlePriceFilter(selectedRange) {
-    let filteredProducts = [...originalProducts];
+    setIsLoading(true);
 
-    switch (selectedRange) {
-      case "under10000":
-        filteredProducts = filteredProducts.filter(
-          (p) => p.price - Math.round((p.price * p.discount) / 100) < 10000
-        );
-        break;
-      case "between10000And25000":
-        filteredProducts = filteredProducts.filter(
-          (p) =>
-            p.price - Math.round((p.price * p.discount) / 100) > 10000 &&
-            p.price - Math.round((p.price * p.discount) / 100) < 25000
-        );
-        break;
-      case "between25000And40000":
-        filteredProducts = filteredProducts.filter(
-          (p) =>
-            p.price - Math.round((p.price * p.discount) / 100) > 25000 &&
-            p.price - Math.round((p.price * p.discount) / 100) < 40000
-        );
-        break;
-      case "over40000":
-        filteredProducts = filteredProducts.filter(
-          (p) => p.price - Math.round((p.price * p.discount) / 100) > 40000
-        );
-        break;
-      default:
-        enqueueSnackbar("Select an Option", { variant: "error" });
-        break;
-    }
-    setProducts(filteredProducts);
+    setTimeout(() => {
+      let filteredProducts = [...originalProducts];
+
+      switch (selectedRange) {
+        case "under10000":
+          filteredProducts = filteredProducts.filter(
+            (p) => p.price - Math.round((p.price * p.discount) / 100) < 10000
+          );
+          break;
+        case "between10000And25000":
+          filteredProducts = filteredProducts.filter(
+            (p) =>
+              p.price - Math.round((p.price * p.discount) / 100) > 10000 &&
+              p.price - Math.round((p.price * p.discount) / 100) < 25000
+          );
+          break;
+        case "between25000And40000":
+          filteredProducts = filteredProducts.filter(
+            (p) =>
+              p.price - Math.round((p.price * p.discount) / 100) > 25000 &&
+              p.price - Math.round((p.price * p.discount) / 100) < 40000
+          );
+          break;
+        case "over40000":
+          filteredProducts = filteredProducts.filter(
+            (p) => p.price - Math.round((p.price * p.discount) / 100) > 40000
+          );
+          break;
+        default:
+          enqueueSnackbar("Select an Option", { variant: "error" });
+          break;
+      }
+      setProducts(filteredProducts);
+      setIsLoading(false);
+    }, 500);
   }
 
   return (

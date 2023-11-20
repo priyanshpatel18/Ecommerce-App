@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useSnackbar } from "notistack";
 
-export default function DiscountFilter({ originalProducts, setProducts }) {
+export default function DiscountFilter({
+  originalProducts,
+  setProducts,
+  setIsLoading,
+}) {
   const [selectedRange, setSelectedRange] = useState(null);
   const { enqueueSnackbar } = useSnackbar();
 
@@ -10,26 +14,31 @@ export default function DiscountFilter({ originalProducts, setProducts }) {
   }
 
   function handleDiscountFilter(selectedRange) {
-    let filteredProducts = [...originalProducts];
+    setIsLoading(true);
 
-    switch (selectedRange) {
-      case "over10":
-        filteredProducts = filteredProducts.filter((p) => p.discount > 10);
-        setProducts(filteredProducts);
-        break;
-      case "over20":
-        filteredProducts = filteredProducts.filter((p) => p.discount > 20);
-        setProducts(filteredProducts);
-        break;
-      case "over35":
-        filteredProducts = filteredProducts.filter((p) => p.discount > 35);
-        setProducts(filteredProducts);
-        break;
-      default:
-        enqueueSnackbar("Select an Option", { variant: "error" });
-        break;
-    }
-    setProducts(filteredProducts);
+    setTimeout(() => {
+      let filteredProducts = [...originalProducts];
+
+      switch (selectedRange) {
+        case "over10":
+          filteredProducts = filteredProducts.filter((p) => p.discount > 10);
+          setProducts(filteredProducts);
+          break;
+        case "over20":
+          filteredProducts = filteredProducts.filter((p) => p.discount > 20);
+          setProducts(filteredProducts);
+          break;
+        case "over35":
+          filteredProducts = filteredProducts.filter((p) => p.discount > 35);
+          setProducts(filteredProducts);
+          break;
+        default:
+          enqueueSnackbar("Select an Option", { variant: "error" });
+          break;
+      }
+
+      setIsLoading(false);
+    }, 500);
   }
 
   return (

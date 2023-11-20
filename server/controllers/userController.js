@@ -63,6 +63,9 @@ export const AddToCart = async (req, res) => {
   try {
     const userEmail = UserService.getUser(token).email;
     const loggedUser = await User.findOne({ email: userEmail });
+    if (loggedUser.cart.includes(productId)) {
+      return res.status(401).send("Product Already Exists in the Cart");
+    }
     loggedUser.cart.push(productId);
     await loggedUser.save();
     res.status(201).send("Added to Cart");
