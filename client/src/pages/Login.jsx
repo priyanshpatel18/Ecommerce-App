@@ -33,7 +33,9 @@ export default function Login() {
           variant: "success",
         });
         redirect("/");
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       })
       .catch((err) => {
         enqueueSnackbar(err.response.data, { variant: "error" });

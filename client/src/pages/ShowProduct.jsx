@@ -64,10 +64,10 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
           withCredentials: true,
         }
       );
+      redirect(-1);
       enqueueSnackbar("Added to Cart", {
         variant: "success",
       });
-      redirect(-1);
     } catch (err) {
       console.error(err);
       enqueueSnackbar(err.response.data, { variant: "error" });

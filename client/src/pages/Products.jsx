@@ -7,8 +7,9 @@ import Dropdown from "../components/Dropdown.jsx";
 import PriceFilterPhone from "../components/PriceFilterPhone.jsx";
 import DiscountFilter from "../components/DiscountFilter.jsx";
 import Loader from "../components/Loader.jsx";
+import AllProducts from "../components/AllProducts.jsx";
 
-export default function Products({ setShowProductsList }) {
+export default function Products({ setShowProductsList, showProductsList }) {
   const [originalProducts, setOriginalProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const { category } = useParams();
@@ -39,41 +40,14 @@ export default function Products({ setShowProductsList }) {
       {isLoading ? <Loader isLoading={isLoading} /> : <> </>}
       <Navbar
         setProducts={setProducts}
-        originalProducts={originalProducts}
         setShowProductsList={setShowProductsList}
       />
-      <div className="productsContainer">
-        <div className="sortContainer">
-          <div className="categorySort">
-            <h3>Category</h3>
-            <Dropdown />
-          </div>
-          <div className="priceSort">
-            <h3>Price</h3>
-            <PriceFilterPhone
-              originalProducts={originalProducts}
-              setProducts={setProducts}
-              setIsLoading={setIsLoading}
-            />
-          </div>
-          <div className="discountSort">
-            <h3>Discount</h3>
-            <DiscountFilter
-              originalProducts={originalProducts}
-              setIsLoading={setIsLoading}
-              setProducts={setProducts}
-            />
-          </div>
-        </div>
-        <div className="listContainer">
-          <h2>Showing {products.length} Results</h2>
-          <div className="productList">
-            {products.map((product, index) => (
-              <ProductCard product={product} key={index} />
-            ))}
-          </div>
-        </div>
-      </div>
+      <AllProducts
+        originalProducts={originalProducts}
+        products={products}
+        setProducts={setProducts}
+        setIsLoading={setIsLoading}
+      />
     </>
   );
 }

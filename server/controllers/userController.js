@@ -26,7 +26,7 @@ export const Login = async (req, res) => {
   const { email, password } = req.body;
 
   // Check if user exist and populate cart
-  const user = await User.findOne({ email }).populate("cart");
+  const user = await User.findOne({ email });
   if (!user) {
     res.status(401).send("You need to Sign Up First");
     return;

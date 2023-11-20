@@ -56,7 +56,12 @@ export default function Cart({ setShowProductsList, showProductsList }) {
         setProducts={setProducts}
       />
       {showProductsList ? (
-        <AllProducts products={products} setProducts={setProducts} />
+        <AllProducts
+          products={products}
+          setProducts={setProducts}
+          originalProducts={originalProducts}
+          isLoading={isLoading}
+        />
       ) : (
         <div className="cartContainer">
           <h1>Shopping Cart</h1>

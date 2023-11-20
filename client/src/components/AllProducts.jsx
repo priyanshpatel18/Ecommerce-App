@@ -7,6 +7,7 @@ export default function AllProducts({
   originalProducts,
   products,
   setProducts,
+  setIsLoading,
 }) {
   return (
     <>
@@ -21,6 +22,7 @@ export default function AllProducts({
             <PriceFilterPhone
               originalProducts={originalProducts}
               setProducts={setProducts}
+              setIsLoading={setIsLoading}
             />
           </div>
           <div className="discountSort">
@@ -28,11 +30,12 @@ export default function AllProducts({
             <DiscountFilter
               originalProducts={originalProducts}
               setProducts={setProducts}
+              setIsLoading={setIsLoading}
             />
           </div>
         </div>
         <div className="listContainer">
-          <h2>Showing {products?.length} Results</h2>
+          <h2>Showing {products?.length || 0} Results</h2>
           <div className="productList">
             {products?.map((product, index) => (
               <ProductCard product={product} key={index} />

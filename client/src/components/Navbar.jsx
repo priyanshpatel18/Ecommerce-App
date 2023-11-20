@@ -17,7 +17,7 @@ export default function Navbar({ setProducts, setShowProductsList }) {
   const redirect = useNavigate();
   const [cartCount, setCartCount] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [originalProducts, setOriginalProducts]=useState([])
+  const [originalProducts, setOriginalProducts] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -121,7 +121,11 @@ export default function Navbar({ setProducts, setShowProductsList }) {
         <a href="/" onClick={() => setShowProductsList(false)}>
           <img src={logo} alt="logo" className="logo" />
         </a>
-        <form action="/products" className="searchBar">
+        <form
+          action="/products"
+          className="searchBar"
+          onSubmit={handleSearchFilter}
+        >
           <input
             type="text"
             placeholder="Search ShopHub.com"
@@ -129,11 +133,7 @@ export default function Navbar({ setProducts, setShowProductsList }) {
             required
             onChange={(e) => setSearchItems(e.target.value.toLowerCase())}
           />
-          <button
-            type="submit"
-            className="submitBtn"
-            onClick={handleSearchFilter}
-          >
+          <button type="submit" className="submitBtn">
             <img src={searchIcon} alt="search" className="searchIcon" />
           </button>
         </form>

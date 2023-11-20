@@ -26,7 +26,12 @@ export default function App() {
         <Route path="/signup" element={<Signup />} />
         <Route
           path="/products/category/:category"
-          element={<Products setShowProductsList={setShowProductsList} />}
+          element={
+            <Products
+              setShowProductsList={setShowProductsList}
+              showProductsList={showProductsList}
+            />
+          }
         />
         <Route
           path="/products/:productId"

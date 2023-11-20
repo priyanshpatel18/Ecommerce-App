@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, index }) => (
-  <Link to={`/products/${product._id}`} key={index} className="product">
+  <a href={`/products/${product._id}`} key={index} className="product">
     <div className="imageContainer">
       <img src={product.imageUrl} alt="thumbnail" />
     </div>
@@ -22,7 +21,7 @@ const ProductCard = ({ product, index }) => (
           : product.description}
       </p>
     </div>
-  </Link>
+  </a>
 );
 
 export default ProductCard;
