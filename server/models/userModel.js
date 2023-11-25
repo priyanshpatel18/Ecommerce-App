@@ -25,12 +25,14 @@ const userSchema = new Schema({
 
 userSchema.pre("save", async function (next) {
   try {
-    // Generate Salt
-    const salt = await bcrypt.genSalt(10);
-    // Create hashed password with salt
-    const hashedPassword = await bcrypt.hash(this.password, salt);
-    // Changing password to hashedPassword
-    this.password = hashedPassword;
+    if (this.isNew || this.isModified("password")) {
+      // Generate Salt
+      const salt = await bcrypt.genSalt(10);
+      // Create hashed password with salt
+      const hashedPassword = await bcrypt.hash(this.password, salt);
+      // Changing password to hashedPassword
+      this.password = hashedPassword;
+    }
     next();
   } catch (error) {
     next(error);

@@ -8,8 +8,6 @@ export const setUser = (user) => {
       _id: user._id,
       email: user.email,
       userName: user.userName,
-      password: user.password,
-      cart: user.cart,
     },
     SECRET_KEY,
     {
