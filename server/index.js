@@ -13,7 +13,13 @@ import cookieParser from "cookie-parser";
 // MiddleWares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+    methods: ["POST", "GET"],
+  })
+);
 app.use(cookieParser());
 
 // Routes

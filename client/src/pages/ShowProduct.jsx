@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar.jsx";
 import { useSnackbar } from "notistack";
@@ -11,7 +11,6 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
   const [product, setProduct] = useState({});
   const { productId } = useParams();
   const { enqueueSnackbar } = useSnackbar();
-  const redirect = useNavigate();
   const [products, setProducts] = useState([]);
   const [originalProducts, setOriginalProducts] = useState([]);
 
@@ -21,7 +20,7 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
         setIsLoading(true);
         if (productId) {
           const response = await axios.get(
-            `http://localhost:8080/products/${productId}`
+            `https://shophub-chi.vercel.app/products/${productId}`
           );
           setProduct(response.data);
           setTimeout(() => {
@@ -37,7 +36,7 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
     const fetchOriginalProducts = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get("http://localhost:8080/products");
+        const res = await axios.get("https://shophub-chi.vercel.app/products");
         setOriginalProducts(res.data);
         setProducts(res.data);
         setTimeout(() => {
@@ -64,7 +63,6 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
           withCredentials: true,
         }
       );
-      redirect(-1);
       enqueueSnackbar("Added to Cart", {
         variant: "success",
       });
