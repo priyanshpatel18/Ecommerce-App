@@ -28,6 +28,7 @@ app.use("/user", userRouter);
 app.use("/vendor", vendorRouter);
 
 // Connection
+console.log(process.env.DB_URL, process.env.PORT);
 mongoose
   .connect(process.env.DB_URL)
   .then(() => {

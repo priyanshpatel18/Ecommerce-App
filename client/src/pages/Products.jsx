@@ -2,10 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
-import ProductCard from "../components/ProductCard.jsx";
-import Dropdown from "../components/Dropdown.jsx";
-import PriceFilterPhone from "../components/PriceFilterPhone.jsx";
-import DiscountFilter from "../components/DiscountFilter.jsx";
 import Loader from "../components/Loader.jsx";
 import AllProducts from "../components/AllProducts.jsx";
 
@@ -18,7 +14,7 @@ export default function Products({ setShowProductsList, showProductsList }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("http://localhost:8080/products")
+      .get("https://shophub-taupe.vercel.app/products")
       .then((res) => {
         const categorizedProducts = res.data.filter(
           (product) => product.category === category

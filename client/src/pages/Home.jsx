@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("http://localhost:8080/products")
+      .get("https://shophub-taupe.vercel.app/products")
       .then((res) => {
         setOriginalProducts(res.data);
         setProducts(res.data);
