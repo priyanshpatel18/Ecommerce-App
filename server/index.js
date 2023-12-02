@@ -7,11 +7,6 @@ import vendorRouter from "./routes/vendorRouter.js";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
-import path from "path";
-
-// Serve static files from the 'client' directory
-app.use(express.static(path.join(__dirname, "client")));
-
 // Authentication
 import cookieParser from "cookie-parser";
 
@@ -20,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://shophub-five.vercel.app/",
+    origin: "http://localhost:3000",
     credentials: true,
     methods: ["POST", "GET"],
   })
@@ -33,16 +28,11 @@ app.use("/user", userRouter);
 app.use("/vendor", vendorRouter);
 
 // Connection
-console.log("Connecting to the database...");
+console.log(process.env.DB_URL, process.env.PORT);
 mongoose
-  .connect(process.env.DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.DB_URL)
   .then(() => {
-    console.log("Database connected successfully");
-    app.listen(process.env.PORT, () => console.log("Server connected"));
+    console.log("DataBase Connected");
+    app.listen(process.env.PORT, () => console.log("Server Connected"));
   })
-  .catch((error) => {
-    console.error("Database connection error:", error);
-  });
+  .catch((err) => console.error(err));

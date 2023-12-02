@@ -15,7 +15,7 @@ export default function Cart({ setShowProductsList, showProductsList }) {
     const fetchUserCart = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get("https://shophub-taupe.vercel.app/user/cart", {
+        const response = await axios.get("http://localhost:8080/user/cart", {
           withCredentials: true,
         });
         setCartItems(response.data.cartItems);
@@ -32,7 +32,7 @@ export default function Cart({ setShowProductsList, showProductsList }) {
     const fetchOriginalProducts = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get("https://shophub-taupe.vercel.app/products");
+        const res = await axios.get("http://localhost:8080/products");
         setOriginalProducts(res.data);
         setProducts(res.data);
         setTimeout(() => {

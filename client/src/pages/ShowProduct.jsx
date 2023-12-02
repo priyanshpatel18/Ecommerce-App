@@ -20,7 +20,7 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
         setIsLoading(true);
         if (productId) {
           const response = await axios.get(
-            `https://shophub-taupe.vercel.app/products/${productId}`
+            `http://localhost:8080/products/${productId}`
           );
           setProduct(response.data);
           setTimeout(() => {
@@ -36,7 +36,7 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
     const fetchOriginalProducts = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get("https://shophub-taupe.vercel.app/products");
+        const res = await axios.get("http://localhost:8080/products");
         setOriginalProducts(res.data);
         setProducts(res.data);
         setTimeout(() => {
@@ -57,7 +57,7 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
 
     try {
       await axios.post(
-        `https://shophub-taupe.vercel.app/user/addToCart/${productId}`,
+        `http://localhost:8080/user/addToCart/${productId}`,
         productId,
         {
           withCredentials: true,
