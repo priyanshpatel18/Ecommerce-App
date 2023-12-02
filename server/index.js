@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://shophub-taupe.vercel.app/",
+    origin: "https://shophub-five.vercel.app/",
     credentials: true,
     methods: ["POST", "GET"],
   })
