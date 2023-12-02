@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import { SECRET_KEY } from "../config.js";
 
 // Setting Token For User
 export const setUser = (user) => {
@@ -9,7 +8,7 @@ export const setUser = (user) => {
       email: user.email,
       userName: user.userName,
     },
-    SECRET_KEY,
+    process.env.SECRET_KEY,
     {
       expiresIn: "7d",
     }
@@ -19,5 +18,5 @@ export const setUser = (user) => {
 // Getting Token From User
 export const getUser = (token) => {
   if (!token) return null;
-  return jwt.verify(token, SECRET_KEY);
+  return jwt.verify(token, process.env.SECRET_KEY);
 };

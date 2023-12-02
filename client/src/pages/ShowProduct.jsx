@@ -20,7 +20,7 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
         setIsLoading(true);
         if (productId) {
           const response = await axios.get(
-            `https://shophub-chi.vercel.app/products/${productId}`
+            `http://localhost:8080/products/${productId}`
           );
           setProduct(response.data);
           setTimeout(() => {
@@ -36,7 +36,7 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
     const fetchOriginalProducts = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get("https://shophub-chi.vercel.app/products");
+        const res = await axios.get("http://localhost:8080/products");
         setOriginalProducts(res.data);
         setProducts(res.data);
         setTimeout(() => {

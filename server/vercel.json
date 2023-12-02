@@ -1,10 +1,6 @@
 {
   "version": 2,
-  "builds": [{ "src": "*.js", "use": "@vercel/json" }],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ]
+  "name": "shophub",
+  "builds": [{ "src": "app.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/app.js" }]
 }
