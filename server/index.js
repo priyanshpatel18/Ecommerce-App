@@ -7,6 +7,11 @@ import vendorRouter from "./routes/vendorRouter.js";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
+import path from "path";
+
+// Serve static files from the 'client' directory
+app.use(express.static(path.join(__dirname, "client")));
+
 // Authentication
 import cookieParser from "cookie-parser";
 
