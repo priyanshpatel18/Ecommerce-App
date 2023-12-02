@@ -28,11 +28,16 @@ app.use("/user", userRouter);
 app.use("/vendor", vendorRouter);
 
 // Connection
-console.log(process.env.DB_URL, process.env.PORT);
+console.log("Connecting to the database...");
 mongoose
-  .connect(process.env.DB_URL)
-  .then(() => {
-    console.log("DataBase Connected");
-    app.listen(process.env.PORT, () => console.log("Server Connected"));
+  .connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
-  .catch((err) => console.error(err));
+  .then(() => {
+    console.log("Database connected successfully");
+    app.listen(process.env.PORT, () => console.log("Server connected"));
+  })
+  .catch((error) => {
+    console.error("Database connection error:", error);
+  });
