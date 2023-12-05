@@ -112,7 +112,7 @@ export default function Navbar({ setProducts, setShowProductsList }) {
       enqueueSnackbar("You need to Login First", { variant: "error" });
       return;
     }
-    redirect("/cart");
+    redirect("/user/cart");
   }
 
   return (
