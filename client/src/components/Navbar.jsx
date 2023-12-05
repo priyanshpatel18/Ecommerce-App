@@ -27,7 +27,6 @@ export default function Navbar({ setProducts, setShowProductsList }) {
       })
       .then((response) => {
         setCartCount(response.data.cartCount);
-        console.log(response.data.cartCount);
       })
       .catch((err) => {
         console.error(err);

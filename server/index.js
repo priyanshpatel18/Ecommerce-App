@@ -26,7 +26,6 @@ app.use(cookieParser());
 app.use("/products", productRouter);
 app.use("/user", userRouter);
 app.use("/vendor", vendorRouter);
-app.use("/user/cart", cors());
 
 // Connection
 console.log(process.env.DB_URL, process.env.PORT);
