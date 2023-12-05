@@ -77,15 +77,18 @@ export const AddToCart = async (req, res) => {
 // Get Cart Items
 export const getCartItems = async (req, res) => {
   const token = req.cookies.token;
+  console.log(token);
   const userObject = UserService.getUser(token);
+  console.log(userObject);
   if (!userObject) {
     return;
   }
   const userEmail = userObject.email;
+  console.log(userEmail);
   try {
     const user = await User.findOne({ email: userEmail });
     const cartItems = user.cart;
-
+    console.log(cartItems.length);
     const products = await Product.find({ _id: { $in: cartItems } });
     res.status(201).json({ cartItems: products, cartCount: cartItems.length });
   } catch (error) {
