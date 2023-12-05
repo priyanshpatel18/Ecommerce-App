@@ -43,7 +43,7 @@ export default function App() {
           }
         />
         <Route
-          path="/cart"
+          path="/user/cart"
           element={
             <Cart
               setShowProductsList={setShowProductsList}
