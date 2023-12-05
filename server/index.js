@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://shophub-five.vercel.app/",
+    origin: "https://shop-hub-lovat.vercel.app",
     credentials: true,
     methods: ["POST", "GET"],
   })
@@ -36,5 +36,3 @@ mongoose
     app.listen(process.env.PORT, () => console.log("Server Connected"));
   })
   .catch((err) => console.error(err));
-
-export default app;
