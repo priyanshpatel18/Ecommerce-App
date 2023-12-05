@@ -18,7 +18,6 @@ export default function Home() {
       .then((res) => {
         setOriginalProducts(res.data);
         setProducts(res.data);
-        console.log(res.data);
         setTimeout(() => {
           setIsLoading(false);
         }, 500);

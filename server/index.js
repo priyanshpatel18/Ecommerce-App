@@ -11,8 +11,6 @@ dotenv.config();
 import cookieParser from "cookie-parser";
 
 // MiddleWares
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: "https://shop-hub-lovat.vercel.app",
@@ -20,12 +18,15 @@ app.use(
     methods: ["POST", "GET"],
   })
 );
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Routes
 app.use("/products", productRouter);
 app.use("/user", userRouter);
 app.use("/vendor", vendorRouter);
+app.use("/user/cart", cors());
 
 // Connection
 console.log(process.env.DB_URL, process.env.PORT);
