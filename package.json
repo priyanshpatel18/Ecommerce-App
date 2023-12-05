@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "dev": "vercel dev"
-  },
-  "devDependencies": {
-    "vercel": "^32.6.1"
-  }
-}
