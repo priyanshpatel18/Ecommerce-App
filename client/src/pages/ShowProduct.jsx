@@ -20,7 +20,7 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
         setIsLoading(true);
         if (productId) {
           const response = await axios.get(
-            `http://localhost:8080/products/${productId}`
+            `https://shophub-five.vercel.app/products/${productId}`
           );
           setProduct(response.data);
           setTimeout(() => {
@@ -36,7 +36,7 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
     const fetchOriginalProducts = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get("http://localhost:8080/products");
+        const res = await axios.get("https://shophub-five.vercel.app/products");
         setOriginalProducts(res.data);
         setProducts(res.data);
         setTimeout(() => {
@@ -57,7 +57,7 @@ const ShowProduct = ({ setShowProductsList, showProductsList }) => {
 
     try {
       await axios.post(
-        `http://localhost:8080/user/addToCart/${productId}`,
+        `https://shophub-five.vercel.app/user/addToCart/${productId}`,
         productId,
         {
           withCredentials: true,

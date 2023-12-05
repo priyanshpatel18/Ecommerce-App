@@ -24,7 +24,7 @@ export default function Signup() {
     };
 
     axios
-      .post(`http://localhost:8080/user/signup`, data)
+      .post(`https://shophub-five.vercel.app/user/signup`, data)
       .then(() => {
         setIsLoading(false);
         enqueueSnackbar("Account Created Successfully", {

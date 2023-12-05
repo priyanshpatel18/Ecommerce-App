@@ -15,7 +15,7 @@ export default function Cart({ setShowProductsList, showProductsList }) {
     const fetchUserCart = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get("http://localhost:8080/user/cart", {
+        const response = await axios.get("https://shophub-five.vercel.app/user/cart", {
           withCredentials: true,
         });
         setCartItems(response.data.cartItems);
@@ -32,7 +32,7 @@ export default function Cart({ setShowProductsList, showProductsList }) {
     const fetchOriginalProducts = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get("http://localhost:8080/products");
+        const res = await axios.get("https://shophub-five.vercel.app/products");
         setOriginalProducts(res.data);
         setProducts(res.data);
         setTimeout(() => {

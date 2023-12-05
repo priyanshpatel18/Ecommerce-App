@@ -14,7 +14,7 @@ export default function Products({ setShowProductsList, showProductsList }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("http://localhost:8080/products")
+      .get("https://shophub-five.vercel.app/products")
       .then((res) => {
         const categorizedProducts = res.data.filter(
           (product) => product.category === category

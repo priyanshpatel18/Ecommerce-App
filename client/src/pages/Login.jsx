@@ -21,7 +21,7 @@ export default function Login() {
       password,
     };
     axios
-      .post(`http://localhost:8080/user/login`, data)
+      .post(`https://shophub-five.vercel.app/user/login`, data)
       .then((response) => {
         // Set Token for User
         const { token } = response.data;

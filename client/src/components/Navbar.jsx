@@ -22,7 +22,7 @@ export default function Navbar({ setProducts, setShowProductsList }) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("http://localhost:8080/user/cart", { withCredentials: true })
+      .get("https://shophub-five.vercel.app/user/cart", { withCredentials: true })
       .then((response) => {
         setCartCount(response.data.cartCount);
       })
@@ -33,7 +33,7 @@ export default function Navbar({ setProducts, setShowProductsList }) {
 
     setIsLoading(true);
     axios
-      .get("http://localhost:8080/products")
+      .get("https://shophub-five.vercel.app/products")
       .then((res) => {
         setOriginalProducts(res.data);
         setTimeout(() => {
