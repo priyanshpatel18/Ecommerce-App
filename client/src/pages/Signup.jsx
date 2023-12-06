@@ -42,11 +42,11 @@ export default function Signup() {
   return (
     <>
       {isLoading ? <Loader isLoading={isLoading} /> : <> </>}
-      <div className="login-container">
+      <div className="loginContainer">
         <Link to="/">
           <img src={logo} alt="logo" className="logo" />
         </Link>
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="loginForm" onSubmit={handleSubmit}>
           <h2>Create Account</h2>
           <label htmlFor="userName">Your Name</label>
           <input

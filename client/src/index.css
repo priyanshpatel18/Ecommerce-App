@@ -14,7 +14,10 @@
 }
 
 body {
-  background: #e3e6e6;
+  background: url("./assets/blob-scene-haikei.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 a {
@@ -82,7 +85,7 @@ a {
 
 /* -----NAVBAR----- */
 nav {
-  background: #000;
+  background: #222;
   width: 100%;
   padding: 5px 20px;
   display: flex;
@@ -211,8 +214,11 @@ nav .logo {
 
 /* -----CARD-LIST----- */
 .cardContainer {
-  justify-content: center;
+  position: absolute;
+  bottom: 0px;
   display: flex;
+  width: 100%;
+  justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
 }
@@ -220,7 +226,7 @@ nav .logo {
 .wrapper {
   padding: 15px;
   background: #fff;
-  margin: 20px 0;
+  margin: 50px 0;
 }
 
 .wrapper h2 {
@@ -230,13 +236,8 @@ nav .logo {
   margin-bottom: 10px;
 }
 
-.boxes {
-  display: inline-block;
-}
-
 .boxes a {
   text-decoration: none;
-  padding: 10px;
 }
 
 .thumbnail {
@@ -254,22 +255,22 @@ nav .logo {
 /* -----LOGIN-PAGE----- */
 /* -----SIGN-UP----- */
 
-.login-container {
+.loginContainer {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.login-container .logo {
+.loginContainer .logo {
   width: 100px;
 }
-.login-container h2 {
+.loginContainer h2 {
   font-size: 30px;
   font-weight: 500;
   margin: 20px 0;
 }
-.login-form {
+.loginForm {
   background: #fff;
   width: 40%;
   padding: 30px;
@@ -279,15 +280,15 @@ nav .logo {
   border: 2px solid #ccc;
   border-radius: 10px;
 }
-.login-form label {
+.loginForm label {
   font-weight: 600;
 }
-.login-form input {
+.loginForm input {
   margin-bottom: 20px;
   padding: 10px;
   font-size: 20px;
 }
-.login-form .loginBtn {
+.loginForm .loginBtn {
   margin: 20px 0;
 }
 .signUpLink {
@@ -329,7 +330,7 @@ nav .logo {
 }
 
 .productsContainer .sortContainer {
-  background: rgb(205, 205, 205);
+  background: rgba(205, 205, 205, 0.7);
   min-height: 100vh;
   flex: 1.5;
   padding: 10px;
@@ -338,6 +339,10 @@ nav .logo {
 .productsContainer .listContainer {
   flex: 8.5;
   padding: 30px;
+}
+
+.listContainer h2 {
+  color: #e3e6e6;
 }
 
 .productsContainer .productList {
@@ -517,8 +522,6 @@ nav .logo {
 .cartContainer h1 {
   text-transform: uppercase;
   margin-bottom: 10px;
-}
-.detailsContainer {
 }
 .cartItem .btnContainer {
   margin: 10px 0;

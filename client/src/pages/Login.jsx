@@ -50,11 +50,11 @@ export default function Login() {
   return (
     <>
       {isLoading ? <Loader isLoading={isLoading} /> : <></>}
-      <div className="login-container">
+      <div className="loginContainer">
         <Link to="/">
           <img src={logo} alt="logo" className="logo" />
         </Link>
-        <form className="login-form" onSubmit={handleLogin}>
+        <form className="loginForm" onSubmit={handleLogin}>
           <h2>Login</h2>
           <label htmlFor="email">Email Address</label>
           <input
