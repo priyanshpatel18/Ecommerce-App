@@ -63,7 +63,7 @@ a {
   height: 56px;
   border-radius: 50%;
   border: 3px solid;
-  border-color: rgb(230, 180, 0) transparent;
+  border-color: rgb(250, 175, 60) transparent;
 }
 
 @keyframes rotation {
@@ -124,7 +124,7 @@ nav .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(255, 205, 110);
+  background: rgb(250, 175, 60);
   border: none;
   outline: none;
   cursor: pointer;
@@ -132,7 +132,7 @@ nav .logo {
   border-bottom-right-radius: 3px;
 }
 .searchBar .submitBtn:hover {
-  background: rgb(240, 165, 70);
+  background: rgb(230, 155, 40);
 }
 .searchBar .searchIcon {
   width: 50%;
@@ -143,7 +143,7 @@ nav .logo {
   gap: 20px;
 }
 .loginBtn {
-  background: rgb(250, 200, 0);
+  background: rgb(250, 175, 60);
   padding: 10px 25px;
   border-radius: 10px;
   font-size: 17px;
@@ -152,7 +152,7 @@ nav .logo {
   text-transform: uppercase;
 }
 .loginBtn:hover {
-  background: rgb(230, 180, 0);
+  background: rgb(230, 155, 40);
 }
 .shoppingCart {
   position: relative;
@@ -175,7 +175,7 @@ nav .logo {
   width: 40px;
 }
 .userBtn {
-  background: rgb(250, 200, 0);
+  background: rgb(250, 175, 60);
   padding: 10px 25px;
   border-radius: 10px;
   font-size: 17px;
@@ -185,7 +185,7 @@ nav .logo {
   position: relative;
 }
 .userBtn:hover {
-  background: rgb(230, 180, 0);
+  background: rgb(230, 155, 40);
 }
 .dropdown {
   position: absolute;
@@ -343,19 +343,20 @@ nav .logo {
 
 .listContainer h2 {
   color: #e3e6e6;
+  margin-bottom: 30px;
 }
 
 .productsContainer .productList {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 30px;
 }
 
 .product {
   width: 100%;
   padding: 15px;
   background: #fff;
-  border-radius: 3px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -422,7 +423,7 @@ nav .logo {
 }
 
 .filterBtn {
-  background: rgb(250, 200, 0);
+  background: rgb(250, 175, 60);
   padding: 5px 15px;
   border-radius: 5px;
   font-size: 14px;
@@ -433,11 +434,14 @@ nav .logo {
   display: block;
 }
 .filterBtn:hover {
-  background: rgb(230, 180, 0);
+  background: rgb(230, 155, 40);
 }
 /* -----PRODUCT-DISPLAY----- */
 .productDisplayContainer {
   display: flex;
+  gap: 30px;
+  margin: 30px;
+  color: #e3e6e6;
 }
 .productDisplayContainer > .imageContainer {
   background: #fff;
@@ -447,7 +451,6 @@ nav .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 30px;
 }
 .productImage {
   max-width: 100%;
@@ -456,7 +459,6 @@ nav .logo {
 }
 .detailsContainer {
   flex: 1;
-  padding: 30px;
 }
 .detailsContainer .productName {
   text-transform: uppercase;
@@ -480,6 +482,8 @@ nav .logo {
 .detailsContainer .productPrice {
   font-weight: 500;
   font-size: 30px;
+  color: rgb(0, 215, 0);
+  font-weight: 600;
 }
 .detailsContainer .actualPrice {
   font-weight: 300;
@@ -488,13 +492,13 @@ nav .logo {
   margin-bottom: 10px;
 }
 .productStock {
-  color: rgb(113, 192, 95);
+  color: rgb(0, 215, 0);
   font-size: 20px;
   font-weight: 400;
   margin-bottom: 15px;
 }
 .addToCart {
-  background: rgb(250, 200, 0);
+  background: rgb(250, 175, 60);
   padding: 15px 25px;
   border-radius: 5px;
   cursor: pointer;
@@ -504,7 +508,7 @@ nav .logo {
   display: block;
 }
 .addToCart:hover {
-  background: rgb(230, 180, 0);
+  background: rgb(230, 150, 40);
 }
 
 /* -----CART_CONTAINER----- */

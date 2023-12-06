@@ -7,7 +7,6 @@ export default function CardList() {
 
   return (
     <>
-      <div className="cardBg"></div>
       <div className="cardContainer">
         {cards.map((card, index) => (
           <Card key={index} Object={data[card]} />

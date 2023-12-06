@@ -13,7 +13,7 @@ import cookieParser from "cookie-parser";
 // MiddleWares
 app.use(
   cors({
-    origin: "https://shop-hub-lovat.vercel.app",
+    origin: "http://localhost:3000",
     credentials: true,
     methods: ["POST", "GET"],
   })
@@ -28,7 +28,6 @@ app.use("/user", userRouter);
 app.use("/vendor", vendorRouter);
 
 // Connection
-console.log(process.env.DB_URL, process.env.PORT);
 mongoose
   .connect(process.env.DB_URL)
   .then(() => {
