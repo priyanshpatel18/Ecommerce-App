@@ -13,7 +13,7 @@ import cookieParser from "cookie-parser";
 // MiddleWares
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://shop-hub-lovat.vercel.app",
     credentials: true,
     methods: ["POST", "GET"],
   })
